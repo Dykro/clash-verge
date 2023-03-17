@@ -110,5 +110,6 @@
   "toggle_tun_mode": "切换Tun模式",
   "enable_tun_mode": "开启Tun模式",
   "disable_tun_mode": "关闭Tun模式",
-  "start proxy mode": "启动加速"
+  "start proxy mode": "启动加速",
+  "Clipboard Import":"从剪贴板导入"
 }

@@ -29,7 +29,11 @@ import { ProfileMore } from "@/components/profile/profile-more";
 import { useProfiles } from "@/hooks/use-profiles";
 import { ConfigViewer } from "@/components/setting/mods/config-viewer";
 import { throttle } from "lodash-es";
+import { readText } from '@tauri-apps/api/clipboard';
 
+
+
+const url2  = await readText();
 const ProfilePage = () => {
   const { t } = useTranslation();
 
@@ -42,7 +46,6 @@ const ProfilePage = () => {
     patchProfiles,
     mutateProfiles,
   } = useProfiles();
-
   const { data: chainLogs = {}, mutate: mutateLogs } = useSWR(
     "getRuntimeLogs",
     getRuntimeLogs
@@ -70,7 +73,11 @@ const ProfilePage = () => {
     return { regularItems, enhanceItems };
   }, [profiles]);
 
+  
+
   const onImport = async () => {
+
+    const url  = await readText();
     if (!url) return;
     setUrl("");
     setDisabled(true);
@@ -96,6 +103,10 @@ const ProfilePage = () => {
       setDisabled(false);
     }
   };
+
+
+
+
 
   const onSelect = useLockFn(async (current: string, force: boolean) => {
     if (!force && current === profiles.current) return;
@@ -223,25 +234,13 @@ const ProfilePage = () => {
       }
     >
       <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
-        <TextField
-          hiddenLabel
-          fullWidth
-          size="small"
-          value={url}
-          variant="outlined"
-          autoComplete="off"
-          spellCheck="false"
-          onChange={(e) => setUrl(e.target.value)}
-          sx={{ input: { py: 0.65, px: 1.25 } }}
-          placeholder={t("Profile URL")}
-        />
         <Button
-          disabled={!url || disabled}
+          disabled={!url2 || disabled}
           variant="contained"
           size="small"
           onClick={onImport}
         >
-          {t("Import")}
+          {t("Clipboard Import")}
         </Button>
         <Button
           variant="contained"
