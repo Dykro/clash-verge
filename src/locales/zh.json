@@ -1,6 +1,6 @@
 {
-  "Label-Proxies": "代 理",
-  "Label-Profiles": "配 置",
+  "Label-Proxies": "节 点",
+  "Label-Profiles": "订 阅",
   "Label-Connections": "连 接",
   "Label-Logs": "日 志",
   "Label-Rules": "规 则",
@@ -10,13 +10,12 @@
   "Logs": "日志",
   "Clear": "清除",
   "Proxies": "代理",
-  "Proxy Groups": "代理组",
+  "Proxy Groups": "选择节点",
   "rule": "规则",
   "global": "全局",
   "direct": "直连",
   "script": "脚本",
-
-  "Profiles": "配置",
+  "Profiles": "订阅组",
   "Profile URL": "配置文件链接",
   "Import": "导入",
   "New": "新建",
@@ -35,9 +34,6 @@
   "Refresh": "刷新",
   "To Top": "移到最前",
   "To End": "移到末尾",
-  "Update All Profiles": "更新所有配置",
-  "View Runtime Config": "查看运行时配置",
-  "Reactivate Profiles": "重新激活配置",
 
   "Location": "当前节点",
   "Delay check": "延迟测试",
@@ -95,7 +91,6 @@
   "Clash Field": "Clash 字段",
   "Runtime Config": "运行配置",
   "ReadOnly": "只读",
-  "Restart": "重启内核",
 
   "Back": "返回",
   "Save": "保存",
@@ -114,5 +109,6 @@
   "disable_system_proxy": "关闭系统代理",
   "toggle_tun_mode": "切换Tun模式",
   "enable_tun_mode": "开启Tun模式",
-  "disable_tun_mode": "关闭Tun模式"
+  "disable_tun_mode": "关闭Tun模式",
+  "start proxy mode": "启动加速"
 }

@@ -6,8 +6,9 @@ import { Button, ButtonGroup, Paper } from "@mui/material";
 import { getClashConfig, updateConfigs } from "@/services/api";
 import { patchClashConfig } from "@/services/cmds";
 import { useVerge } from "@/hooks/use-verge";
-import { BasePage } from "@/components/base";
+import { BasePage,Notice } from "@/components/base";
 import { ProxyGroups } from "@/components/proxy/proxy-groups";
+import SettingSystem from "@/components/setting2/setting-system";
 
 const ProxyPage = () => {
   const { t } = useTranslation();
@@ -40,7 +41,12 @@ const ProxyPage = () => {
     }
   }, [curMode]);
 
+  const onError = (err: any) => {
+    Notice.error(err?.message || err.toString());
+  };
+
   return (
+
     <BasePage
       contentStyle={{ height: "100%" }}
       title={t("Proxy Groups")}

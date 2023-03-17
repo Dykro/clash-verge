@@ -15,7 +15,6 @@
   "global": "global",
   "direct": "direct",
   "script": "script",
-
   "Profiles": "Profiles",
   "Profile URL": "Profile URL",
   "Import": "Import",
@@ -35,9 +34,6 @@
   "Refresh": "Refresh",
   "To Top": "To Top",
   "To End": "To End",
-  "Update All Profiles": "Update All Profiles",
-  "View Runtime Config": "View Runtime Config",
-  "Reactivate Profiles": "Reactivate Profiles",
 
   "Location": "Location",
   "Delay check": "Delay check",
@@ -91,7 +87,6 @@
   "Clash Field": "Clash Field",
   "Runtime Config": "Runtime Config",
   "ReadOnly": "ReadOnly",
-  "Restart": "Restart",
 
   "Back": "Back",
   "Save": "Save",
@@ -106,5 +101,6 @@
   "disable_system_proxy": "Disable System Proxy",
   "toggle_tun_mode": "Toggle Tun Mode",
   "enable_tun_mode": "Enable Tun Mode",
-  "disable_tun_mode": "Disable Tun Mode"
+  "disable_tun_mode": "Disable Tun Mode",
+  "start proxy mode": "Start Proxy"
 }

@@ -16,10 +16,10 @@ import { BaseErrorBoundary, Notice } from "@/components/base";
 import LayoutItem from "@/components/layout/layout-item";
 import LayoutControl from "@/components/layout/layout-control";
 import LayoutTraffic from "@/components/layout/layout-traffic";
-import UpdateButton from "@/components/layout/update-button";
 import useCustomTheme from "@/components/layout/use-custom-theme";
 import getSystem from "@/utils/get-system";
 import "dayjs/locale/zh-cn";
+import SettingSystem from "@/components/setting2/setting-system";
 
 dayjs.extend(relativeTime);
 
@@ -32,6 +32,9 @@ const Layout = () => {
 
   const { verge } = useVerge();
   const { theme_blur, language } = verge || {};
+  const onError = (err: any) => {
+    Notice.error(err?.message || err.toString());
+  };
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
@@ -98,18 +101,22 @@ const Layout = () => {
           <div className="layout__left" data-windrag>
             <div className="the-logo" data-windrag>
               <LogoSvg />
-
-              {!(OS === "windows" && WIN_PORTABLE) && (
-                <UpdateButton className="the-newbtn" />
-              )}
             </div>
 
             <List className="the-menu">
+
+
+              <Paper sx={{ borderRadius: 1, boxShadow: 0, mb: 1 }}>
+                <SettingSystem onError={onError} />
+              </Paper>
+
+              
               {routers.map((router) => (
                 <LayoutItem key={router.label} to={router.link}>
                   {t(router.label)}
                 </LayoutItem>
               ))}
+
             </List>
 
             <div className="the-traffic" data-windrag>
