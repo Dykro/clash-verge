@@ -50,15 +50,15 @@ const SettingVerge = ({ onError }: Props) => {
 
       <SettingItem label={t("Language")}>
         <GuardState
-          value={language ?? "en"}
+          value={language ?? "zh"}
           onCatch={onError}
           onFormat={(e: any) => e.target.value}
           onChange={(e) => onChangeData({ language: e })}
           onGuard={(e) => patchVerge({ language: e })}
         >
           <Select size="small" sx={{ width: 100, "> div": { py: "7.5px" } }}>
-            <MenuItem value="zh">中文</MenuItem>
             <MenuItem value="en">English</MenuItem>
+            <MenuItem value="zh">中文</MenuItem>
           </Select>
         </GuardState>
       </SettingItem>

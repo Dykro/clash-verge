@@ -20,6 +20,8 @@ import useCustomTheme from "@/components/layout/use-custom-theme";
 import getSystem from "@/utils/get-system";
 import "dayjs/locale/zh-cn";
 import SettingSystem from "@/components/setting2/setting-system";
+import ProfilePage2 from "@/pages/profiles2";
+
 
 dayjs.extend(relativeTime);
 
@@ -80,7 +82,7 @@ const Layout = () => {
 
   return (
     <SWRConfig value={{ errorRetryCount: 3 }}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme} >
         <Paper
           square
           elevation={0}
@@ -101,10 +103,9 @@ const Layout = () => {
           <div className="layout__left" data-windrag>
             <div className="the-logo" data-windrag>
               <LogoSvg />
-            </div>
+            </div> 
 
             <List className="the-menu">
-
 
               <Paper sx={{ borderRadius: 1, boxShadow: 0, mb: 1 }}>
                 <SettingSystem onError={onError} />
@@ -118,18 +119,21 @@ const Layout = () => {
               ))}
 
             </List>
-
             <div className="the-traffic" data-windrag>
-              <LayoutTraffic />
+              <Paper sx={{ borderRadius: 0, boxShadow: 0, mb: 0 }}>
+                <ProfilePage2 />
+              </Paper>
             </div>
+
           </div>
 
-          <div className="layout__right" data-windrag>
+          <div className="layout__right" data-windrag >
             {OS === "windows" && (
               <div className="the-bar">
                 <LayoutControl />
               </div>
             )}
+            
 
             <div className="the-content">
               <BaseErrorBoundary>

@@ -60,7 +60,7 @@ export async function saveProfileFile(index: string, fileData: string) {
 export async function importProfile(url: string) {
   return invoke<void>("import_profile", {
     url,
-    option: { with_proxy: true },
+    option: { with_proxy: false},
   });
 }
 

@@ -23,9 +23,9 @@ import { BasePage, DialogRef, Notice } from "@/components/base";
 import {
   ProfileViewer,
   ProfileViewerRef,
-} from "@/components/profile/profile-viewer";
-import { ProfileItem } from "@/components/profile/profile-item";
-import { ProfileMore } from "@/components/profile/profile-more";
+} from "@/components/profile2/profile-viewer";
+import { ProfileItem } from "@/components/profile2/profile-item";
+import { ProfileMore } from "@/components/profile2/profile-more";
 import { useProfiles } from "@/hooks/use-profiles";
 import { ConfigViewer } from "@/components/setting/mods/config-viewer";
 import { throttle } from "lodash-es";
@@ -34,7 +34,7 @@ import { readText } from '@tauri-apps/api/clipboard';
 
 
 const url2  = await readText();
-const ProfilePage = () => {
+const ProfilePage2 = () => {
   const { t } = useTranslation();
 
   const [url, setUrl] = useState("");
@@ -95,7 +95,6 @@ const ProfilePage = () => {
           patchProfiles({ current });
           mutateLogs();
           setTimeout(() => activateSelected(), 2000);
-        updateProfile(remoteItem.uid,{update_interval: 1});
         }
       });
     } catch (err: any) {
@@ -199,78 +198,29 @@ const ProfilePage = () => {
       });
     });
   });
+  const ac1 = 1;
+  const currentid = regularItems.find((obj) => {
+    return obj.uid === profiles.current;
+  }) ?? {uid: '',type: 'local',name: '请添加订阅',file: '',url: '请导入链接',extra:{upload: 0,download: 0,total: 0,expire: 0},updated: 0};
   return (
-    <BasePage
-      title={t("Profiles")}
-      header={
-        <Box sx={{ mt: 1, display: "flex", alignItems: "center", gap: 1 }}>
-          <IconButton
-            id="tiancai"
-            size="small"
-            color="inherit"
-            title={t("Update All Profiles")}
-            onClick={onUpdateAll}
-          >
-            <RefreshRounded />
-          </IconButton>
-
-          <IconButton
-            size="small"
-            color="inherit"
-            title={t("View Runtime Config")}
-            onClick={() => configRef.current?.open()}
-          >
-            <TextSnippetOutlined />
-          </IconButton>
-
-          <IconButton
-            size="small"
-            color="primary"
-            title={t("Reactivate Profiles")}
-            onClick={onEnhance}
-          >
-            <LocalFireDepartmentRounded />
-          </IconButton>
-        </Box>
-      }
-    >
-      <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
-        <Button
-          disabled={!url2 || disabled}
-          variant="contained"
-          size="small"
-          onClick={onImport}
-        >
-          {t("Clipboard Import")}
-        </Button>
-        <Button
-          variant="contained"
-          size="small"
-          onClick={() => viewerRef.current?.create()}
-        >
-          {t("New")}
-        </Button>
-      </Stack>
-      
-      <Box sx={{ mb: 4.5 }}>
-        <Grid container spacing={{ xs: 2, lg: 3 }}>
-          {regularItems.map((item) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={item.file}>
+    <div>
+      <Box sx={{ mb: 0 ,mt:0 }}>
+        <Grid container spacing={{ xs: 12}}>
+            <Grid item xs={12} key={currentid?.file}>
               <ProfileItem
-                selected={profiles.current === item.uid}
-                itemData={item}
-                onSelect={(f) => onSelect(item.uid, f)}
-                onEdit={() => viewerRef.current?.edit(item)}
+                selected={1 !== ac1}
+                itemData={currentid}
+                onSelect={(f) => onSelect(currentid.uid, f)}
+                onEdit={() => viewerRef.current?.edit(currentid)}
               />
             </Grid>
-          ))}
         </Grid>
       </Box>
 
       {enhanceItems.length > 0 && (
-        <Grid container spacing={{ xs: 2, lg: 3 }}>
+        <Grid container spacing={{ xs: 12}}>
           {enhanceItems.map((item) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={item.file}>
+            <Grid item xs={12} key={item.file}>
               <ProfileMore
                 selected={!!chain.includes(item.uid)}
                 itemData={item}
@@ -290,11 +240,8 @@ const ProfilePage = () => {
 
       <ProfileViewer ref={viewerRef} onChange={() => mutateProfiles()} />
       <ConfigViewer ref={configRef} />
-      <script>
-              document.getElementById("tiancai").click();
-          </script>
-    </BasePage>
-    
+    </div>
   );
 };
-export default ProfilePage;
+
+export default ProfilePage2;

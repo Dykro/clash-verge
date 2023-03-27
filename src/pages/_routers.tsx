@@ -22,18 +22,9 @@ export const routers = [
     ele: ConnectionsPage,
   },
   {
-    label: "Label-Rules",
-    link: "/rules",
-    ele: RulesPage,
-  },
-  {
-    label: "Label-Logs",
-    link: "/logs",
-    ele: LogsPage,
-  },
-  {
     label: "Label-Settings",
     link: "/settings",
     ele: SettingsPage,
   },
+  
 ];
