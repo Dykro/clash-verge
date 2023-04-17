@@ -32,7 +32,6 @@ import { throttle } from "lodash-es";
 import { readText } from '@tauri-apps/api/clipboard';
 
 
-
 const url2  = await readText();
 const ProfilePage = () => {
   const { t } = useTranslation();
@@ -236,7 +235,6 @@ const ProfilePage = () => {
     >
       <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
         <Button
-          disabled={!url2 || disabled}
           variant="contained"
           size="small"
           onClick={onImport}
